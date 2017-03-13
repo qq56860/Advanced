@@ -24,3 +24,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     This is my JSP page. <br>
   </body>
 </html>
+
+
+<script type="text/javascript">
+<%-- $(function() {
+	    alert('<%=path%>');
+	     $.ajax({
+	    url:'<%=path%>/manager/account/forAjax',
+	    type:'POST',    //GET
+	    async:true,    //或false,是否异步
+	    data:'',
+	    timeout:5000,    //超时时间
+	    dataType:'json',    //返回的数据格式：json/xml/html/script/jsonp/text
+	    success:function(data){
+	       alert(data.msg);
+	    	},
+		})
+    }); --%>
+
+</script>
