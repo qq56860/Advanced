@@ -21,7 +21,7 @@ import java.util.List;
 	 * 
 	 * */
 
-
+//推模式 主题类
 abstract class Subject{
 	private List<Observer> list = new ArrayList<Observer>();
 	private int i;
@@ -43,7 +43,6 @@ abstract class Subject{
 	
 }
 
-//推模式 具体主题类
 class ConcreteSubject extends Subject{
 	private String state;
 	
@@ -58,11 +57,11 @@ class ConcreteSubject extends Subject{
 	
 }
 
-
+//推模式 观察者类
 interface Observer{
 	public void update(String state);
 }
-//推模式 具体观察者类
+
 class ConcreteObserver implements Observer{
 	
 	private String state;
@@ -74,36 +73,88 @@ class ConcreteObserver implements Observer{
 	}
 	
 }
-//拉模式 具体主题类
 
+
+//////////////////////////////////////////////////////////////////////////////
+
+
+
+//拉模式 主题类
+abstract class Subject_pull{
+	private List<Observer_pull> list = new ArrayList<Observer_pull>();
+	private int i;
+	//添加观察者
+	public void add(Observer_pull observer){
+		list.add(observer);
+	}
+	//删除观察者
+	public void delete(Observer_pull observer){
+		list.remove(observer);
+	}
+	
+	public void notifyObserver(){
+		for(Observer_pull observer : list){
+			System.out.println("通知第"+(++i)+"个观察者");
+			observer.update(this);
+		}
+	}
+	
+}
+
+class ConcreteSubject_pull extends Subject_pull{
+	private String state;
+    
+    public String getState() {
+        return state;
+    }
+    
+    public void change(String newState){
+    	this.state = newState;
+    	System.out.println("要更新的状态是"+state);
+    	this.notifyObserver();
+    }
+    
+}
 
 
 //拉模式具体观察者类
-class ConcreteObserver_pull implements Observer{
+interface Observer_pull{
+	public void update(Subject_pull subject);
+}
+
+class ConcreteObserver_pull implements Observer_pull{
 	
 	private String state;
 	
-	public void update(String state) {
+	public void update(Subject_pull subject) {
 		// TODO Auto-generated method stub
-		System.out.println("收到状态---"+state);
-		this.state = Subject.
+		this.state = ((ConcreteSubject_pull)subject).getState();
+		System.out.println("状态是"+state);
 	}
 	
 }
 
 public class ObserverTest {
 	public static void main(String[] args) {
-		ConcreteSubject sub1 = new ConcreteSubject();
-
-		ConcreteObserver ob1 = new ConcreteObserver();
-		ConcreteObserver ob2 = new ConcreteObserver();
-		ConcreteObserver ob3 = new ConcreteObserver();
+//		ConcreteSubject sub1 = new ConcreteSubject();
+//
+//		ConcreteObserver ob1 = new ConcreteObserver();
+//		ConcreteObserver ob2 = new ConcreteObserver();
+//		ConcreteObserver ob3 = new ConcreteObserver();
+//		
+//		sub1.add(ob1);
+//		sub1.add(ob2);
+//		sub1.add(ob3);
+//		
+//		sub1.change("1");
 		
-		sub1.add(ob1);
-		sub1.add(ob2);
-		sub1.add(ob3);
 		
-		sub1.change("1");
+		ConcreteSubject_pull sub2 = new ConcreteSubject_pull();
+		sub2.add(new ConcreteObserver_pull());
+		sub2.add(new ConcreteObserver_pull());
+		sub2.add(new ConcreteObserver_pull());
+		
+		sub2.change("2");
 		
 	}
 }
