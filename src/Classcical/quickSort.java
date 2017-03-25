@@ -40,7 +40,7 @@ public class quickSort {
 		quickSort(arr,index+1,right);
 		
 	}
-	//三数取中
+	//三数取中 然后比key小的在做，比key大的在右
 	public static int partition(int[]arr,int left,int right){
 		int mid = (left + right) >> 1;
 		//System.out.println(mid);
