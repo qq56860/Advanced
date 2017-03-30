@@ -1,4 +1,4 @@
-package Algorithm;
+package written_examination;
 
 
 import java.util.Scanner;
