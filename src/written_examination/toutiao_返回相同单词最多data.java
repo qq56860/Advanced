@@ -13,6 +13,8 @@ import java.util.Scanner;
 	 * 
 	 * 要求：看作是 ---输入查询一个 查询句子query，去匹配data[]中，找出相同单词最多的一句data返回
 	 * 
+	 * trick:单词的去重 包括data的去重，和query的去重（query没去重  0.0 好尴尬）
+	 * 
 	 * */
 public class toutiao_返回相同单词最多data {
 	public static void main(String[] args) {

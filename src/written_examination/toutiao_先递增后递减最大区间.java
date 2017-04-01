@@ -7,6 +7,8 @@ import java.util.Scanner;
 	 * 
 	 * 结果是让求出：最大的一个   先递增-后增减  的区间 ，即 起始点和终止点 x 值相差最大
 	 * 
+	 * trick:left[i] > 1 和 right[i] > 1 必须同时满足
+	 * 
 	 * */
 public class toutiao_先递增后递减最大区间 {
 	public static void main(String[] args) {
@@ -51,7 +53,11 @@ public class toutiao_先递增后递减最大区间 {
 			}
 			
 		}
+		if(retStart > 1 && retEnd > 1 ){
+			System.out.print(retStart+" "+retEnd);
+		}else{
+			System.out.println();
+		}
 		
-		System.out.print(retStart+" "+retEnd);
 	}
 }
